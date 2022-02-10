@@ -132,7 +132,7 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/all_tokens', (req, res) => {
-  Token.find({}, (err, allTokens) => {
+  Token.find({ tokenValue: { $ne: null }}, (err, allTokens) => {
     if (err) {
       res.statusCode = 500;
       res.send(err);
