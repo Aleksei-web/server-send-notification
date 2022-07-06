@@ -110,25 +110,25 @@ app.post('/save_token', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-  const { login, password, token } = req.body;
-  if (!login || !password) {
-    return res.status(400).send({ error: 'Login and password is required' });
-  }
+//   const { login, password, token } = req.body;
+//   if (!login || !password) {
+//     return res.status(400).send({ error: 'Login and password is required' });
+//   }
 
-  let user = await Token.findOne({ login });
-  if (!user) {
-    return res.status(404).send({ error: 'User not found' });
-  }
+//   let user = await Token.findOne({ login });
+//   if (!user) {
+//     return res.status(404).send({ error: 'User not found' });
+//   }
 
-  if (user.password !== password) {
-    return res.status(400).send({ error: 'Password has missing' });
-  }
+//   if (user.password !== password) {
+//     return res.status(400).send({ error: 'Password has missing' });
+//   }
 
-  if (token && user.tokenValue !== token) {
-    user = await Token.updateOne({ login }, { tokenValue: token });
-  }
+//   if (token && user.tokenValue !== token) {
+//     user = await Token.updateOne({ login }, { tokenValue: token });
+//   }
 
-  return res.status(200).send({ user: { login, tokenValue: user.tokenValue } });
+  return res.status(200).send({ user: { login: 'test', tokenValue: 'token' } });
 });
 
 app.get('/all_tokens', (req, res) => {
